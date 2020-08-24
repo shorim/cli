@@ -4,10 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"os"
 	"strings"
 	"time"
 
+	"github.com/hashicorp/terraform/helper/wrappedstreams"
 	"github.com/kyma-project/cli/internal/root"
 
 	"github.com/briandowns/spinner"
@@ -70,19 +70,19 @@ func (s *stepWithSpinner) Stop(success bool) {
 }
 
 func (s *stepWithSpinner) LogInfo(msg string) {
-	s.logTo(os.Stdout, infoGlyph+msg)
+	s.logTo(wrappedstreams.Stdout(), infoGlyph+msg)
 }
 
 func (s *stepWithSpinner) LogInfof(format string, args ...interface{}) {
-	s.logTof(os.Stdout, infoGlyph+format, args...)
+	s.logTof(wrappedstreams.Stdout(), infoGlyph+format, args...)
 }
 
 func (s *stepWithSpinner) LogError(msg string) {
-	s.logTof(os.Stderr, color.YellowString(warningGlyph)+msg)
+	s.logTof(wrappedstreams.Stderr(), color.YellowString(warningGlyph)+msg)
 }
 
 func (s *stepWithSpinner) LogErrorf(format string, args ...interface{}) {
-	s.logTof(os.Stderr, color.YellowString(warningGlyph)+format, args...)
+	s.logTof(wrappedstreams.Stderr(), color.YellowString(warningGlyph)+format, args...)
 }
 
 func (s *stepWithSpinner) logTof(to io.Writer, format string, args ...interface{}) {
@@ -104,7 +104,7 @@ func (s *stepWithSpinner) logTo(to io.Writer, format string) {
 }
 
 func (s *stepWithSpinner) Prompt(msg string) (string, error) {
-	reader := bufio.NewReader(os.Stdin)
+	reader := bufio.NewReader(wrappedstreams.Stdin())
 	isActive := s.spinner.Active()
 	s.spinner.Stop()
 	fmt.Printf("%s%s", questionGlyph, msg)

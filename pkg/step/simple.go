@@ -3,9 +3,9 @@ package step
 import (
 	"bufio"
 	"fmt"
-	"os"
 	"strings"
 
+	"github.com/hashicorp/terraform/helper/wrappedstreams"
 	"github.com/kyma-project/cli/internal/root"
 )
 
@@ -65,7 +65,7 @@ func (s *simpleStep) LogInfof(format string, args ...interface{}) {
 }
 
 func (s *simpleStep) LogError(msg string) {
-	fmt.Fprintf(os.Stderr, "%s%s\n", warningGlyph, msg)
+	fmt.Fprintf(wrappedstreams.Stderr(), "%s%s\n", warningGlyph, msg)
 }
 
 func (s *simpleStep) LogErrorf(format string, args ...interface{}) {
@@ -73,7 +73,7 @@ func (s *simpleStep) LogErrorf(format string, args ...interface{}) {
 }
 
 func (s *simpleStep) Prompt(msg string) (string, error) {
-	reader := bufio.NewReader(os.Stdin)
+	reader := bufio.NewReader(wrappedstreams.Stdin())
 	fmt.Printf("%s%s", questionGlyph, msg)
 	answer, err := reader.ReadString('\n')
 	return strings.TrimSpace(answer), err
