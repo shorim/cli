@@ -35,7 +35,6 @@ require (
 	github.com/golangplus/testing v0.0.0-20180327235837-af21d9c3145e // indirect
 	github.com/gorilla/mux v1.7.4 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
-	github.com/hashicorp/terraform v0.12.13
 	github.com/imdario/mergo v0.3.8 // indirect
 	github.com/kyma-incubator/hydroform/install v0.0.0-20200812115205-1299dd4d0c6c
 	github.com/kyma-incubator/hydroform/provision v0.0.0-20200803123159-99d6ef03bf0c

@@ -3,9 +3,9 @@ package status
 import (
 	"encoding/json"
 	"fmt"
+	"os"
 	"strings"
 
-	"github.com/hashicorp/terraform/helper/wrappedstreams"
 	oct "github.com/kyma-incubator/octopus/pkg/apis/testing/v1alpha1"
 	"github.com/kyma-project/cli/cmd/kyma/test"
 	"github.com/kyma-project/cli/internal/cli"
@@ -116,7 +116,7 @@ func (cmd *command) printTestSuiteStatus(testSuite *oct.ClusterTestSuite, output
 	case "junit":
 		logsFetcher := logs.NewFetcherForTestingPods(cmd.K8s.Static().CoreV1(), []string{})
 		junitCreator := junitxml.NewCreator(logsFetcher)
-		if err := junitCreator.Write(wrappedstreams.Stdout(), testSuite); err != nil {
+		if err := junitCreator.Write(os.Stdout, testSuite); err != nil {
 			return errors.Wrapf(err, "while writing junit report for '%s' test suite", testSuite.GetName())
 		}
 	default:
@@ -143,7 +143,7 @@ func printTestSuite(testSuite *oct.ClusterTestSuite, wide bool) {
 
 	fmt.Printf("Condition:\t%s\r\n", testSuite.Status.Conditions[len(testSuite.Status.Conditions)-1].Type)
 
-	writer := test.NewTableWriter([]string{}, wrappedstreams.Stdout())
+	writer := test.NewTableWriter([]string{}, os.Stdout)
 	for _, t := range testSuite.Status.Results {
 
 		if wide {

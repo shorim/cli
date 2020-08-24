@@ -2,8 +2,8 @@ package list
 
 import (
 	"fmt"
+	"os"
 
-	"github.com/hashicorp/terraform/helper/wrappedstreams"
 	"github.com/kyma-project/cli/cmd/kyma/test"
 	"github.com/kyma-project/cli/internal/cli"
 	"github.com/kyma-project/cli/internal/kube"
@@ -49,7 +49,7 @@ func (cmd *command) Run() error {
 		return nil
 	}
 
-	writer := test.NewTableWriter([]string{"TEST SUITE", "COMPLETED", "STATUS"}, wrappedstreams.Stdout())
+	writer := test.NewTableWriter([]string{"TEST SUITE", "COMPLETED", "STATUS"}, os.Stdout)
 
 	for idx := range testSuites.Items {
 		ts := testSuites.Items[idx]

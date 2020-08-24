@@ -3,8 +3,8 @@ package completion
 import (
 	"fmt"
 	"io"
+	"os"
 
-	"github.com/hashicorp/terraform/helper/wrappedstreams"
 	"github.com/pkg/errors"
 
 	"github.com/spf13/cobra"
@@ -33,10 +33,10 @@ func completion(cmd *cobra.Command, args []string) error {
 
 	switch shell := args[0]; shell {
 	case "bash":
-		err := cmd.GenBashCompletion(wrappedstreams.Stdout())
+		err := cmd.GenBashCompletion(os.Stdout)
 		return errors.Wrap(err, "Error generating bash completion")
 	case "zsh":
-		err := genZshCompletion(cmd, wrappedstreams.Stdout())
+		err := genZshCompletion(cmd, os.Stdout)
 		return errors.Wrap(err, "Error generating zsh completion")
 	default:
 		fmt.Printf("Sorry, completion is not supported for %q", shell)
