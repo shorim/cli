@@ -8,12 +8,14 @@ replace (
 	github.com/codegangsta/cli => github.com/urfave/cli v1.22.4
 	// etcd and ugorji need to be versioned together and we need ot force the version from terraform 0.12.13 otherwise we have an ambiguous import
 	github.com/coreos/etcd v3.3.10+incompatible => github.com/coreos/etcd v3.3.15+incompatible
+	github.com/kyma-incubator/hydroform/provision v0.0.0-20200803123159-99d6ef03bf0c => /Users/i531200/go/src/github.com/kyma-incubator/hydroform/provision
 	github.com/ugorji/go v0.0.0-20180813092308-00b869d2f4a5 => github.com/ugorji/go v0.0.0-20181204163529-d75b2dcb6bc8
 	// Docker client has an issue on windows with the latest sys package, we have to fix the version
 	golang.org/x/sys => golang.org/x/sys v0.0.0-20190710143415-6ec70d6a5542
 )
 
 require (
+	github.com/Azure/go-autorest v12.2.0+incompatible
 	github.com/Masterminds/semver v1.5.0
 	github.com/Microsoft/go-winio v0.4.15-0.20200113171025-3fe6c5262873 // indirect
 	github.com/Microsoft/hcsshim v0.8.9 // indirect
@@ -35,7 +37,6 @@ require (
 	github.com/golangplus/testing v0.0.0-20180327235837-af21d9c3145e // indirect
 	github.com/gorilla/mux v1.7.4 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
-	github.com/imdario/mergo v0.3.8 // indirect
 	github.com/kyma-incubator/hydroform/install v0.0.0-20200812115205-1299dd4d0c6c
 	github.com/kyma-incubator/hydroform/provision v0.0.0-20200803123159-99d6ef03bf0c
 	github.com/kyma-incubator/octopus v0.0.0-20191009105757-2e9d86cd9967
@@ -51,7 +52,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/procfs v0.0.5 // indirect
 	github.com/spf13/cobra v0.0.5
-	github.com/stretchr/testify v1.4.0
+	github.com/stretchr/testify v1.5.1
 	go.opencensus.io v0.22.4 // indirect
 	golang.org/x/net v0.0.0-20200707034311-ab3426394381 // indirect
 	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208 // indirect
