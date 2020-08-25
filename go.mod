@@ -8,7 +8,7 @@ replace (
 	github.com/codegangsta/cli => github.com/urfave/cli v1.22.4
 	// etcd and ugorji need to be versioned together and we need ot force the version from terraform 0.12.13 otherwise we have an ambiguous import
 	github.com/coreos/etcd v3.3.10+incompatible => github.com/coreos/etcd v3.3.15+incompatible
-	github.com/kyma-incubator/hydroform/provision v0.0.0-20200803123159-99d6ef03bf0c => /Users/i531200/go/src/github.com/kyma-incubator/hydroform/provision
+	github.com/kyma-incubator/hydroform/provision v0.0.0-20200803123159-99d6ef03bf0c => github.com/shorim/hydroform/provision v0.0.0-20200825140209-f27d79041e89
 	github.com/ugorji/go v0.0.0-20180813092308-00b869d2f4a5 => github.com/ugorji/go v0.0.0-20181204163529-d75b2dcb6bc8
 	// Docker client has an issue on windows with the latest sys package, we have to fix the version
 	golang.org/x/sys => golang.org/x/sys v0.0.0-20190710143415-6ec70d6a5542
